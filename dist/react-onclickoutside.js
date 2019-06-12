@@ -189,6 +189,8 @@ function onClickOutsideHOC(WrappedComponent, config) {
       };
 
       _this.enableOnClickOutside = function () {
+        var document = _this.componentNode && _this.componentNode.getRootNode ? _this.componentNode.getRootNode() : document;
+
         if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
           return;
         }
@@ -231,6 +233,7 @@ function onClickOutsideHOC(WrappedComponent, config) {
       };
 
       _this.disableOnClickOutside = function () {
+        var document = _this.componentNode && _this.componentNode.getRootNode ? _this.componentNode.getRootNode() : document;
         delete enabledInstances[_this._uid];
         var fn = handlersMap[_this._uid];
 
