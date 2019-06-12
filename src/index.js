@@ -131,6 +131,8 @@ export default function onClickOutsideHOC(WrappedComponent, config) {
      * for clicks and touches outside of this element.
      */
     enableOnClickOutside = () => {
+      const document = this.componentNode && this.componentNode.getRootNode ? this.componentNode.getRootNode() : document;
+
       if (typeof document === 'undefined' || enabledInstances[this._uid]) {
         return;
       }
@@ -178,6 +180,8 @@ export default function onClickOutsideHOC(WrappedComponent, config) {
      * for clicks and touches outside of this element.
      */
     disableOnClickOutside = () => {
+      const document = this.componentNode && this.componentNode.getRootNode ? this.componentNode.getRootNode() : document;
+
       delete enabledInstances[this._uid];
       const fn = handlersMap[this._uid];
 
